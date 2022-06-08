@@ -1,12 +1,14 @@
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NativeBaseProvider} from 'native-base';
 import React from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
-import Details from './pages/Details';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Home from './pages/Home';
+import Processes from './pages/Processes';
+import Profile from './pages/Profile';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,10 +20,32 @@ export default function App() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Details" component={Details} />
-        </Stack.Navigator>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({focused, color, size}) => {
+              let iconName = '';
+
+              if (route.name === 'Home') {
+                iconName = focused ? 'ios-home' : 'ios-home-outline';
+              } else if (route.name === 'Processes') {
+                iconName = focused
+                  ? 'ios-document-text'
+                  : 'ios-document-text-outline';
+              } else if (route.name === 'Profile') {
+                iconName = focused
+                  ? 'ios-person-circle'
+                  : 'ios-person-circle-outline';
+              }
+
+              return <Icon name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'gray',
+          })}>
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Processes" component={Processes} />
+          <Tab.Screen name="Profile" component={Profile} />
+        </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );

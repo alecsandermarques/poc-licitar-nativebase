@@ -2,17 +2,15 @@ import {Button} from 'native-base';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-const Home = ({navigation}: any) => {
+function Profile({navigation}: any) {
   return (
     <View style={styles.container}>
-      <Button onPress={() => navigation.navigate('Processes')}>
-        Listar processos
-      </Button>
+      <Button onPress={() => navigation.navigate('Processes')}>Deslogar</Button>
     </View>
   );
-};
+}
 
-export default Home;
+export default Profile;
 
 const styles = StyleSheet.create({
   container: {
