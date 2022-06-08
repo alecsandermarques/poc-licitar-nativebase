@@ -2,7 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {NativeBaseProvider} from 'native-base';
 import React from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
+import {StatusBar, TouchableOpacity, useColorScheme} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Home from './pages/Home';
 import Processes from './pages/Processes';
@@ -41,10 +41,30 @@ export default function App() {
             },
             tabBarActiveTintColor: 'tomato',
             tabBarInactiveTintColor: 'gray',
+            tabBarButton: props => <TouchableOpacity {...props} />,
+            headerTitleAlign: 'center',
           })}>
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Processes" component={Processes} />
-          <Tab.Screen name="Profile" component={Profile} />
+          <Tab.Screen
+            options={{
+              title: 'Início',
+            }}
+            name="Home"
+            component={Home}
+          />
+          <Tab.Screen
+            options={{
+              title: 'Processos',
+            }}
+            name="Processes"
+            component={Processes}
+          />
+          <Tab.Screen
+            options={{
+              title: 'Perfil',
+            }}
+            name="Profile"
+            component={Profile}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
