@@ -5,7 +5,12 @@ import {StyleSheet, View} from 'react-native';
 function Profile({navigation}: any) {
   return (
     <View style={styles.container}>
-      <Button onPress={() => navigation.navigate('Processes')}>Deslogar</Button>
+      <Button
+        style={styles.processosButton}
+        onPress={() => navigation.navigate('Processes')}>
+        Deslogar
+      </Button>
+      <Button onPress={() => navigation.navigate('Login')}>Login</Button>
     </View>
   );
 }
@@ -17,5 +22,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  processosButton: {
+    marginBottom: 16,
   },
 });
