@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "31266675411",
+    "project_id": "licitar-app",
+    "storage_bucket": "licitar-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31266675411:android:3311e6a214cde86b385226",
+        "android_client_info": {
+          "package_name": "com.licitar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31266675411-ev7cmgf1n275rgqq7n6qbpki8rragk84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF20CgLTiGXzWbMnrhjsRTyDHw-neHGmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31266675411-ev7cmgf1n275rgqq7n6qbpki8rragk84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
