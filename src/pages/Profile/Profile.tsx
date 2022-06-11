@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import UserContext from '../../context/UserContext';
 
-function Profile({navigation}: any) {
+function Profile() {
   const {setState} = useContext(UserContext);
 
   const handleLogout = () => {
@@ -15,7 +15,6 @@ function Profile({navigation}: any) {
       <Button style={styles.processosButton} onPress={handleLogout}>
         Deslogar
       </Button>
-      <Button onPress={() => navigation.navigate('Login')}>Login</Button>
     </View>
   );
 }
