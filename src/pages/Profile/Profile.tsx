@@ -1,13 +1,18 @@
 import {Button} from 'native-base';
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
+import UserContext from '../../context/UserContext';
 
 function Profile({navigation}: any) {
+  const {setState} = useContext(UserContext);
+
+  const handleLogout = () => {
+    setState({isLogged: false});
+  };
+
   return (
     <View style={styles.container}>
-      <Button
-        style={styles.processosButton}
-        onPress={() => navigation.navigate('Processes')}>
+      <Button style={styles.processosButton} onPress={handleLogout}>
         Deslogar
       </Button>
       <Button onPress={() => navigation.navigate('Login')}>Login</Button>

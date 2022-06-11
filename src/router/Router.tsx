@@ -1,13 +1,15 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {useContext} from 'react';
+import UserContext from '../context/UserContext';
 import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
 
 const RootStack = createNativeStackNavigator();
 
 const Router = () => {
-  const isLogged = false;
+  const {state} = useContext(UserContext);
+  const {isLogged} = state;
 
   return (
     <NavigationContainer>
