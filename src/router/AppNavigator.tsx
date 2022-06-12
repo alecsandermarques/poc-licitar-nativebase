@@ -2,6 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Chat from '../pages/Chat';
 import Home from '../pages/Home';
 import Processes from '../pages/Processes';
 import Profile from '../pages/Profile';
@@ -25,6 +26,8 @@ const AppNavigator = () => {
             iconName = focused
               ? 'ios-person-circle'
               : 'ios-person-circle-outline';
+          } else if (route.name === 'Chat') {
+            iconName = focused ? 'ios-chatbox' : 'ios-chatbox-outline';
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -47,6 +50,13 @@ const AppNavigator = () => {
         }}
         name="Processes"
         component={Processes}
+      />
+      <TabStack.Screen
+        options={{
+          title: 'Chat',
+        }}
+        name="Chat"
+        component={Chat}
       />
       <TabStack.Screen
         options={{

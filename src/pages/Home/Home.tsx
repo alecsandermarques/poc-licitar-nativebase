@@ -14,7 +14,7 @@ const Home = ({navigation}: any) => {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
   useEffect(() => {
-    const subscribe = firestore()
+    const subscriber = firestore()
       .collection('products')
       .onSnapshot(querySnapshot => {
         const data = querySnapshot.docs.map(doc => {
@@ -28,7 +28,7 @@ const Home = ({navigation}: any) => {
         setProducts(data);
       });
 
-    return () => subscribe();
+    return () => subscriber();
   }, []);
 
   const handleFirestore = () => {
