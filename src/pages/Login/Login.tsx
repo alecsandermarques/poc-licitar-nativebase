@@ -35,8 +35,22 @@ function Login() {
     setState({isLogged: true});
   };
 
+  const handleNewAccount = () => {
+    console.log('reference');
+  };
+
   return (
-    <LoginView {...{control, errors, show, setShow, handleSubmit, onSubmit}} />
+    <LoginView
+      {...{
+        control,
+        errors,
+        show,
+        setShow,
+        handleSubmit,
+        onSubmit,
+        handleNewAccount,
+      }}
+    />
   );
 }
 

@@ -12,6 +12,7 @@ type LoginViewProps = {
   setShow: any;
   handleSubmit: any;
   onSubmit: any;
+  handleNewAccount: any;
 };
 
 const LoginView = ({
@@ -21,6 +22,7 @@ const LoginView = ({
   setShow,
   handleSubmit,
   onSubmit,
+  handleNewAccount,
 }: LoginViewProps) => {
   return (
     <Center height="100%" width="100%">
@@ -91,7 +93,7 @@ const LoginView = ({
               width={180}
               style={styles.signUpButton}
               colorScheme="secondary"
-              onPress={() => console.log('criando nova conta...')}>
+              onPress={handleNewAccount}>
               CRIAR NOVA CONTA
             </Button>
           </Box>
