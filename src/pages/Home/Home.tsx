@@ -14,22 +14,21 @@ const Home = ({navigation}: any) => {
   const [products, setProducts] = useState<ProductProps[]>([]);
 
   useEffect(() => {
-    firestore()
+    const subscribe = firestore()
       .collection('products')
-      .get()
-      .then(response => {
-        const data = response.docs.map(doc => {
-          console.log(doc);
-
+      .onSnapshot(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => {
           return {
             id: doc.id,
             ...doc.data(),
           };
         }) as ProductProps[];
+
         console.log(data);
         setProducts(data);
-      })
-      .catch(error => console.log(error));
+      });
+
+    return () => subscribe();
   }, []);
 
   const handleFirestore = () => {
