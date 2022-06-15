@@ -1,7 +1,9 @@
 import React, {createContext, useState} from 'react';
 
 type UserType = {
+  id: string;
   isLogged: boolean;
+  name: string;
 };
 
 type PropsUserContext = {
@@ -11,7 +13,9 @@ type PropsUserContext = {
 
 const DEFAULT_VALUE = {
   state: {
+    id: '',
     isLogged: false,
+    name: '',
   },
   setState: () => {},
 };

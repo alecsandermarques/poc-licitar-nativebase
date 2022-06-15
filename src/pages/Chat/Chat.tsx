@@ -1,6 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {GiftedChat} from 'react-native-gifted-chat';
+import UserContext from '../../context/UserContext';
 
 interface IUser {
   _id: string | number;
@@ -35,13 +36,15 @@ interface IMessage {
   quickReplies?: QuickReplies;
 }
 
-const Chat = () => {
+const Chat = ({route}: any) => {
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const {processId} = route.params;
+  const {state: userState} = useContext(UserContext);
 
   useEffect(() => {
     const subscriber = firestore()
       .collection('chats')
-      .doc('m1bTtWvCIwYFVvhKBu38')
+      .doc(`${processId}`)
       .collection('messages')
       .orderBy('createdAt', 'desc')
       .onSnapshot(querySnapshot => {
@@ -59,25 +62,25 @@ const Chat = () => {
       });
 
     return () => subscriber();
-  }, []);
+  }, [processId]);
 
-  const onSend = useCallback((items = []) => {
-    firestore()
-      .collection('chats')
-      .doc('m1bTtWvCIwYFVvhKBu38')
-      .collection('messages')
-      .add(items[0])
-      .then(() => {
-        // Alert.alert('Foi!');
-      });
-  }, []);
+  const onSend = useCallback(
+    (items = []) => {
+      firestore()
+        .collection('chats')
+        .doc(`${processId}`)
+        .collection('messages')
+        .add(items[0]);
+    },
+    [processId],
+  );
 
   return (
     <GiftedChat
       messages={messages}
       onSend={items => onSend(items)}
       user={{
-        _id: 1,
+        _id: userState.id,
       }}
     />
   );

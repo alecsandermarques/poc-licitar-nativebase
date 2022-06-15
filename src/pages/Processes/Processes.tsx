@@ -5,13 +5,20 @@ import rawData from '../../mocks/processes.json';
 
 const {data} = rawData;
 
-function Processes() {
+function Processes({navigation}: any) {
+  const handleChat = (id: number) => {
+    navigation.navigate('Chat', {
+      screen: 'Chat',
+      processId: id,
+    });
+  };
+
   return (
     <Box>
       <FlatList
         data={data}
         renderItem={({item}) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handleChat(item.id)}>
             <Box
               borderBottomWidth="1"
               _dark={{

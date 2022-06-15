@@ -1,17 +1,19 @@
-import {Button} from 'native-base';
+import {Button, Text} from 'native-base';
 import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import UserContext from '../../context/UserContext';
 
 function Profile() {
-  const {setState} = useContext(UserContext);
+  const {state, setState} = useContext(UserContext);
+  const {name} = state;
 
   const handleLogout = () => {
-    setState({isLogged: false});
+    setState(oldState => ({...oldState, isLogged: false}));
   };
 
   return (
     <View style={styles.container}>
+      <Text>{name}</Text>
       <Button style={styles.processosButton} onPress={handleLogout}>
         Deslogar
       </Button>

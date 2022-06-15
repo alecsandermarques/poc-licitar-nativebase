@@ -1,4 +1,5 @@
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useToast} from 'native-base';
 import React, {useContext, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
@@ -22,6 +23,8 @@ function Login() {
 
   const [show, setShow] = useState(false);
 
+  const toast = useToast();
+
   const {
     control,
     handleSubmit,
@@ -31,8 +34,16 @@ function Login() {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
-    setState({isLogged: true});
+    const {cpf, password} = data;
+    if (cpf === '1' && password === '1') {
+      setState({id: '1', isLogged: true, name: 'Misael'});
+    } else if (cpf === '2' && password === '2') {
+      setState({id: '2', isLogged: true, name: 'Alecsander'});
+    } else {
+      toast.show({
+        description: 'Usuário ou senha inválidos',
+      });
+    }
   };
 
   const handleNewAccount = () => {

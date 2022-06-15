@@ -2,7 +2,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Chat from '../pages/Chat';
 import Home from '../pages/Home';
 import Processes from '../pages/Processes';
 import Profile from '../pages/Profile';
@@ -50,13 +49,6 @@ const AppNavigator = () => {
         }}
         name="Processes"
         component={Processes}
-      />
-      <TabStack.Screen
-        options={{
-          title: 'Chat',
-        }}
-        name="Chat"
-        component={Chat}
       />
       <TabStack.Screen
         options={{
