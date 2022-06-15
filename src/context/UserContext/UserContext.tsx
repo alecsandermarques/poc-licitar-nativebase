@@ -4,6 +4,7 @@ type UserType = {
   id: string;
   isLogged: boolean;
   name: string;
+  avatar: string;
 };
 
 type PropsUserContext = {
@@ -16,6 +17,7 @@ const DEFAULT_VALUE = {
     id: '',
     isLogged: false,
     name: '',
+    avatar: '',
   },
   setState: () => {},
 };

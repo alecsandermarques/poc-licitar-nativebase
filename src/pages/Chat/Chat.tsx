@@ -81,7 +81,11 @@ const Chat = ({route}: any) => {
       onSend={items => onSend(items)}
       user={{
         _id: userState.id,
+        name: userState.name.split(' ')[0],
+        avatar: userState.avatar,
       }}
+      showUserAvatar
+      renderUsernameOnMessage
     />
   );
 };

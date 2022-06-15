@@ -36,9 +36,19 @@ function Login() {
   const onSubmit = (data: any) => {
     const {cpf, password} = data;
     if (cpf === '1' && password === '1') {
-      setState({id: '1', isLogged: true, name: 'Misael'});
+      setState({
+        id: '1',
+        isLogged: true,
+        name: 'Thiago Cordeiro',
+        avatar: 'https://avatars.githubusercontent.com/u/11415689?v=4',
+      });
     } else if (cpf === '2' && password === '2') {
-      setState({id: '2', isLogged: true, name: 'Alecsander'});
+      setState({
+        id: '2',
+        isLogged: true,
+        name: 'Alecsander Marques',
+        avatar: 'https://avatars.githubusercontent.com/u/17298225?v=4',
+      });
     } else {
       toast.show({
         description: 'Usuário ou senha inválidos',
