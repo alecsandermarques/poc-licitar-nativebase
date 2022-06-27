@@ -84,7 +84,7 @@ const LoginView = ({
 
         <View style={styles.boxbuttons}>
           <Button onPress={handleSubmit(onSubmit)}>ENTRAR</Button>
-          <Button onPress={handleSubmit(onSubmit)} variant="link">
+          <Button onPress={() => {}} variant="link">
             Esqueceu a senha?
           </Button>
           <Divider w="100%" style={styles.divider} />

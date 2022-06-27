@@ -33,23 +33,26 @@ function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
-    const {cpf, password} = data;
-    if (cpf === '1' && password === '1') {
-      setState({
-        id: '1',
-        isLogged: true,
-        name: 'Thiago Cordeiro',
-        avatar: 'https://avatars.githubusercontent.com/u/11415689?v=4',
-      });
-    } else if (cpf === '2' && password === '2') {
-      setState({
-        id: '2',
-        isLogged: true,
-        name: 'Alecsander Marques',
-        avatar: 'https://avatars.githubusercontent.com/u/17298225?v=4',
-      });
-    } else {
+  const onSubmit = async (data: any) => {
+    try {
+      const response = await fetch(
+        'https://manager-api-dev.licitardigital.com.br/auth/doLogin',
+        {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            origin: 'https://dev.licitardigital.com.br',
+          },
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      const responseJson = await response.json();
+      console.log(responseJson);
+    } catch (error) {
       toast.show({
         description: 'Usuário ou senha inválidos',
       });
