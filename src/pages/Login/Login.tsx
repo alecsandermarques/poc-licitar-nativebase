@@ -5,6 +5,7 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import UserContext from '../../context/UserContext';
 import LoginView from './LoginView';
+import api from '../../services/Api';
 
 const schema = yup
   .object({
@@ -35,23 +36,9 @@ function Login() {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch(
-        'https://manager-api-dev.licitardigital.com.br/auth/doLogin',
-        {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-            origin: 'https://dev.licitardigital.com.br',
-          },
-        },
-      );
+      const response = await api.post('auth/doLogin', data);
 
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      const responseJson = await response.json();
-      console.log(responseJson);
+      console.log(response.data);
     } catch (error) {
       toast.show({
         description: 'Usuário ou senha inválidos',
